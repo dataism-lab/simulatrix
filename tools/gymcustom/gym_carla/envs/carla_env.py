@@ -276,8 +276,8 @@ class CarlaEnv(gym.Env):
             bw_rgb = bw_rgb_distances
 
         bw_rgb = cv.resize(bw_rgb, dsize=(self.camera_size, self.camera_size),
-                                     interpolation=cv.INTER_AREA)
-        display = np.concatenate((bw_rgb, camera), axis=1).astype(np.uint8)
+                           interpolation=cv.INTER_AREA)
+        display = np.concatenate((bw_rgb, camera), axis=1, dtype=np.uint8)
         if mode == 'human':
             display = cv.cvtColor(display, cv.COLOR_RGB2BGR)
             cv.imshow('Observation', display)
@@ -326,7 +326,7 @@ class CarlaEnv(gym.Env):
             'state': state.astype(np.float32),
         }
 
-        return np.concatenate([self._obs['edge_distance'], self._obs['state']]).astype(np.float32)
+        return np.concatenate([self._obs['edge_distance'], self._obs['state']], dtype=np.float32)
 
     def _truncated(self):
         """Calculate whether to truncate the current episode."""

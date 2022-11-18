@@ -40,7 +40,9 @@ For ease of experiment you could set `avoid_server_init` to `True` in order to u
 it'll create a new carla server container.
 
 ### Training notes
-If you enable evaluation while training, there'll be created a standalone carla server
+You could enable evalution by setting a number in `evaluation_interval` in training config file.
+
+If you enable evaluation you should know that while training, there'll be created a standalone carla server
 for evaluation purpose, since it's drawbacks of RLLib that we currently can't resolve easily. 
 
 ## PPO parameters

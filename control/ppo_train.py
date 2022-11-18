@@ -55,16 +55,18 @@ def run(args):
                 stop_criteria = {"training_iteration": args.stop_iteration}
                 # "perf/ram_util_percent": 90.0
 
+            checkpoint_freq = args.config.get('evaluation_interval', 1)
+            if not checkpoint_freq:
+                checkpoint_freq = 1
+
             # add custom metrics if needed
             # reporter.add_metric_column("")
             tune.run(CustomPPOTrainer,
                      name=args.name,
 
                      keep_checkpoints_num=2,
-                     # checkpoint_score_attr='evaluation/episode_reward_mean' if 'evaluation_interval' in args.config
-                     # else 'episode_reward_mean',
                      checkpoint_score_attr='episode_reward_mean',
-                     checkpoint_freq=args.config.get('evaluation_interval', 1),
+                     checkpoint_freq=checkpoint_freq,
                      checkpoint_at_end=True,
 
                      restore=store_directory,

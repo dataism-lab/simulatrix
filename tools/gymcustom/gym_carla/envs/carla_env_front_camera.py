@@ -25,7 +25,8 @@ class CarlaFrontCameraEnv(CarlaEnv):
         bw_masks: np.ndarray = self.bew_producer.produce(agent_vehicle=self.core.ego)
 
         # Display camera image
-        camera = cv.resize(self.camera_img, dsize=(self.camera_size, self.camera_size), interpolation=cv.INTER_AREA)
+        camera = cv.resize(self.camera_img, dsize=(self.camera_size, self.camera_size),
+                           interpolation=cv.INTER_AREA)
 
         self._obs = {
             'camera': camera.astype(np.uint8),

@@ -40,7 +40,7 @@ use_gae: true # Generalized Advantage Estimate
 
 # Evaluation
 # run one evaluation step on every 3rd `Algorithm.train()` call.
-evaluation_interval: 2
+evaluation_interval: null
 always_attach_evaluation_results: False
 # run 3 evals
 evaluation_duration: 3
@@ -77,7 +77,7 @@ env_config:
     retries_on_error: 10  # Number of tries to connect to the client
     enable_map_assets: False  # enable / disable all town assets except for the road
     enable_rendering: True  # enable / disable camera images
-    avoid_server_init: True  # Create or use an existing server
+    avoid_server_init: False  # Create or use an existing server
     quality_level: Low
 
   background:
