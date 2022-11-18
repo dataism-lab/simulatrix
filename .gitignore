@@ -1,0 +1,43 @@
+# Envirmoment
+venv/
+env/
+
+# hide folders & files
+*.mp4
+
+# outputs
+birdview_v2_cache/
+output/
+out/
+cache/
+/tools/data_collection/vehicle_spawns/
+temp/
+
+
+# Trash
+__pycache__
+.pytest_cache/
+.coverage
+dist/
+build/
+tmp/
+*.iml
+*.log
+logs
+!logs/*-sample.log
+.ipynb_checkpoints
+
+# IDE
+.vscode
+.idea
+.iml
+
+# Mac
+.DS_Store
+
+# Garbage
+$RECYCLE.BIN/
+*.bkp
+
+# Archives
+*.tar.gz

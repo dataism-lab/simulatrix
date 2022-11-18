@@ -1,0 +1,142 @@
+# System config
+num_workers: 0
+num_envs_per_worker: 1
+num_gpus_per_worker: 0
+num_cpus_per_worker: 11
+num_gpus: 1
+log_level: INFO
+
+# INPUT
+actions_in_input_normalized: False
+observation_filter: NoFilter
+shuffle_buffer_size: 0
+
+# Actor
+rollout_fragment_length: 200
+#train_batch_size: 5120
+train_batch_size: 800
+
+# Learner
+framework: torch
+lr: 0.0025
+kl_coeff: 0.5
+clip_rewards: False
+
+clip_param: 0.2
+vf_clip_param: 1000.0
+
+simple_optimizer: True
+entropy_coeff: 0.01
+sgd_minibatch_size: 256
+num_sgd_iter: 20
+batch_mode: truncate_episodes
+learning_starts: -1
+buffer_size: 50000
+vf_share_layers: True
+gamma: 0.99 # discount factor
+lambda: 0.95 # parameter for gae
+#lr_schedule: [[0 * lr_batch_size, 5e-5],
+#              [75 * lr_batch_size, 5e-5],
+#              [110 * lr_batch_size, 1e-5],
+#              [110 * lr_batch_size, 1e-5],
+#              [120 * lr_batch_size, 5e-6],
+#              [140 * lr_batch_size, 5e-7],
+#              [200 * lr_batch_size, 1e-10],
+#              [300 * lr_batch_size, 1e-12]
+#              ]
+
+
+use_gae: true # Generalized Advantage Estimate
+
+# Evaluation
+# run one evaluation step on every 3rd `Algorithm.train()` call.
+evaluation_interval: 2
+always_attach_evaluation_results: False
+# run 3 evals
+evaluation_duration: 3
+#evaluation_duration: -1
+evaluation_duration_unit: episodes
+# avoid standalone worker for eval
+evaluation_num_workers: 0
+evaluation_parallel_to_training: False
+evaluation_config:
+  explore: false
+
+model:
+  fcnet_hiddens: [ 256, 196 ]
+  fcnet_activation: "tanh"
+  _disable_preprocessor_api: true # for custom Gym
+  conv_filters: None
+  conv_activation: "relu"
+
+# Gym
+env: carla-racer-minmax
+env_config:
+  carla:
+    host: 127.0.0.1  # Client host
+    port: 2000  # default port, used in case of avoid_server_init is False
+    timeout: 10.0  # Timeout of the client
+    timestep: 0.05  # time interval between two frames or 1./FPS, 0.05 is 20 FPS
+    retries_on_error: 10  # Number of tries to connect to the client
+    enable_map_assets: False  # enable / disable all town assets except for the road
+    enable_rendering: True  # enable / disable camera images
+    avoid_server_init: True  # Create or use an existing server
+    quality_level: Low
+
+  background:
+    number_of_vehicles: 0
+    other_vehicle_filter: vehicle.kart.*
+    weather: 'ClearNoon'
+
+  weather:
+    update_freq: 10  # how often the world's weather is updated
+    speed_factor: 1  # how fast it is changing
+
+  augmentations:
+    throttle_noise_std: 0.2
+    brake_noise_std: 0
+    steering_noise_std: 0.01
+    randomize_fps: False
+    randomize_fps_every: 60
+    n_low_friction_areas: 1
+    low_friction_multiplier: 0.7
+    low_friction_areas_size: 100
+
+  spawn_points: [
+#    "-25.518145,80.065155,29.364782",  # x,y,yaw
+#    "32.551285,94.990494,-63.094921",
+#    "43.0,59.7,-137.353",
+#    "-50.5695686340332,49.29917526245117,131.55929565429688",
+#    "29.6,25.5,-224.999"
+  ]
+  spawn_mode: random  # mode of the spawn
+  n_spawn_points: 30  # spawn points will not generate as long as 'spawn_points' is not empty
+  consequent_mode_step: 4
+
+  sensor:
+    angles_front: [ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
+                    50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88 ]
+    crop_type: front_rear  # or front
+    bew_height_meters: 84  # bird-eye render heights in meters
+    bew_width_meters: 37.5 # bird-eye render heights in meters
+    camera_size: 256 # screen size camera
+    min_crash_impulse: 100
+    out_lane_threshold: 5  # threshold for out of lane in meters
+
+  action:
+    discrete: False  # whether to use discrete control space
+    discrete_acc: [ -3.0, 0.0, 3.0 ]  # discrete value of accelerations
+    discrete_steer: [ -0.2, 0.0, 0.2 ]  # discrete value of steering angles
+    continuous_accel_range: [ -3.0, 3.0 ]  # continuous acceleration range
+    continuous_steer_range: [ -0.3, 0.3 ]  # continuous steering angle range
+
+  track: "/Game/map_package/Maps/expedition_loop_bordered/expedition_loop_bordered"  # which town to simulate
+  ego_vehicle_filter: vehicle.kart.kart  # filter for defining ego vehicle
+  max_time_episode: 10000  # maximum timesteps per episode, in case we need truncated()
+  reward_name: basic
+
+#  experiment:
+#    others:
+#      framestack: 4
+#      max_time_idle: 600
+#      max_time_episode: 6400
