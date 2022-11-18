@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  carlasim:
+    image: docetti/carla:0.9.13-1
+    restart: unless-stopped
+    container_name: carlasim
+    ports:
+      - "${CARLA_RPC_PORT:-2000}-${CARLA_STREAM_PORT:-2002}:2000-2002"
+    volumes:
+      - ./NoEditorSim/DefaultEngine.ini:/home/carla/CarlaUE4/Config/DefaultEngine.ini:ro
+    entrypoint: >
+      /bin/bash ./CarlaUE4.sh -carla-rpc-port=2000 -RenderOffScreen -quality-level=Low -nosound -carla-no-hud
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+    networks:
+      - simnet
+
+networks:
+  simnet: #
