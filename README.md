@@ -19,7 +19,7 @@ Ego-states passed to a detached reward function.
   <img src="resources/figures/ego_state_example.png" width=60%>
 </div>
 
-### Components of CarlaGym-Deepracer
+## Components of CarlaGym-Deepracer
 
 1. CarlaCore 
    1. init_server, stop_server;
