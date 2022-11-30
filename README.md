@@ -1,4 +1,4 @@
-# CarlaGym-DeepRacer
+# CarlaGym: DeepRacer
 
 We developed machinie learning pipeline with RL for autonomous vehicle developers. We present end2end solution for learning self-driving cars in Carla simulation environment with GYM-interface. Our solution used for learning RL-agents for racing cars on a given track.
 
