@@ -18,7 +18,8 @@ Ego-states passed to a detached reward function.
 <div align="left">
   <img src="resources/figures/ego_state_example.png" width=60%>
 </div>
-## Components of CarlaGym-Deepracer
+
+### Components of CarlaGym-Deepracer
 
 1. CarlaCore 
    1. init_server, stop_server;
@@ -41,6 +42,29 @@ Our kart for racing
 <div align="left">
   <img src="resources/figures/docet_kart.png" width=40%>
 </div>
+
+## Demo gym interface
+
+Before running a demo you should run a server with `make sim_run` or `make sim_render_run` command.
+<div align="left">
+  <img src="resources/figures/demo_gym.png" width=30%>
+</div>
+
+```bash
+# off-screen carla on ports 2000, 2001 and 2022
+make sim_run
+# stop off-screen carla and switch off the server
+make sim_stop
+# render carla track & open port 2000, 2001 and 2022
+make sim_render
+# stop render carla track and switch off the server
+make sim_render_stop
+```
+
+Demo Gym-interface for carla
+```bash
+make demo_gym
+```
 
 ## Prepare environment
 
@@ -65,28 +89,7 @@ pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/w
 pip install torch==1.12.1+cu102 --extra-index-url https://download.pytorch.org/whl/cu102
 ```
 
-## Demo gym interface
 
-Before running a demo you should run a server with `make sim_run` or `make sim_render_run` command.
-<div align="left">
-  <img src="resources/figures/demo_gym.png" width=30%>
-</div>
-
-```bash
-# off-screen carla on ports 2000, 2001 and 2022
-make sim_run
-# stop off-screen carla and switch off the server
-make sim_stop
-# render carla track & open port 2000, 2001 and 2022
-make sim_render
-# stop render carla track and switch off the server
-make sim_render_stop
-```
-
-Demo Gym-interface for carla
-```bash
-make demo_gym
-```
 
 ## Training
 
