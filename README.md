@@ -43,24 +43,6 @@ Our kart for racing
   <img src="resources/figures/docet_kart.png" width=40%>
 </div>
 
-## Demo gym interface
-
-Before running a demo you should run a server with `make sim_run` or `make sim_render_run` command.
-<div align="left">
-  <img src="resources/figures/demo_gym.png" width=30%>
-</div>
-
-```bash
-# off-screen carla on ports 2000, 2001 and 2022
-make sim_run
-# stop off-screen carla and switch off the server
-make sim_stop
-# render carla track & open port 2000, 2001 and 2022
-make sim_render
-# stop render carla track and switch off the server
-make sim_render_stop
-```
-
 Demo Gym-interface for carla
 ```bash
 make demo_gym
@@ -100,6 +82,22 @@ We designed a specific closed track for racing purpose. It's already included in
   <img src="resources/figures/expedition_loop_waypoints.png" width=30%>
 </div>
 
+## Demo gym interface
 
+Before running a demo you should run a server with `make sim_run` or `make sim_render_run` command.
+<div align="left">
+  <img src="resources/figures/demo_gym.png" width=30%>
+</div>
+
+```bash
+# off-screen carla on ports 2000, 2001 and 2022
+make sim_run
+# stop off-screen carla and switch off the server
+make sim_stop
+# render carla track & open port 2000, 2001 and 2022
+make sim_render
+# stop render carla track and switch off the server
+make sim_render_stop
+```
 
 
