@@ -18,6 +18,29 @@ Ego-states passed to a detached reward function.
 <div align="left">
   <img src="resources/figures/ego_state_example.png" width=60%>
 </div>
+## Components of CarlaGym-Deepracer
+
+1. CarlaCore 
+   1. init_server, stop_server;
+   2. connect_client;
+   3. agent snapshot (deepracer).
+2. CarlaEnv (GYM)
+   1. basic sensors set-up (camera, crash sensor, edge -distance lidar (vlidar) and others)
+   2. actions set-up;
+   3state set-up.
+3. Wrappers for data normalisation, metrics computation.
+4. Simple reward function injection mechanism. 
+   1. Experiment gym interface independent snapshot as parameters for reward.
+   2. Make easy reward shaping with changing the name of reward functions stored in `tools/gymcustom/gym_carla/rewards`.
+5. Inverted server creation by each gym-client.
+6. Very similar to Deepracer with reward shaping, waypoints. Also, we introduce track and a cart for racing without any traffic signs.
+7. Our custom track: "expedition_loop"".
+8. Our custom racing car.
+
+Our kart for racing
+<div align="left">
+  <img src="resources/figures/docet_kart.png" width=40%>
+</div>
 
 ## Prepare environment
 
@@ -74,28 +97,6 @@ We designed a specific closed track for racing purpose. It's already included in
   <img src="resources/figures/expedition_loop_waypoints.png" width=30%>
 </div>
 
-## Components of CarlaGym-Deepracer
 
-1. CarlaCore 
-   1. init_server, stop_server;
-   2. connect_client;
-   3. agent snapshot (deepracer).
-2. CarlaEnv (GYM)
-   1. basic sensors set-up (camera, crash sensor, edge -distance lidar (vlidar) and others)
-   2. actions set-up;
-   3state set-up.
-3. Wrappers for data normalisation, metrics computation.
-4. Simple reward function injection mechanism. 
-   1. Experiment gym interface independent snapshot as parameters for reward.
-   2. Make easy reward shaping with changing the name of reward functions stored in `tools/gymcustom/gym_carla/rewards`.
-5. Inverted server creation by each gym-client.
-6. Very similar to Deepracer with reward shaping, waypoints. Also, we introduce track and a cart for racing without any traffic signs.
-7. Our custom track: "expedition_loop"".
-8. Our custom racing car.
-
-Our kart for racing
-<div align="left">
-  <img src="resources/figures/docet_kart.png" width=40%>
-</div>
 
 
