@@ -2,6 +2,23 @@
 
 We developed a solution for efficient and stable integration of RLLib with Carla simulator. Here we present end2end solution for learning self-driving cars in Carla simulation environment with GYM-interface. The interface handles the deepracer like mechanism for reward shaping and multi-environment data collection. The carla simulator is enriched with new track and a custom racing cart.
 
+### Advantages of Carla Gym interface 
+Main advantages over the other Gym interfaces for Carla are listed below.
+
+- Compute state per each step.
+- Standalone reward function, that is tight with config.
+- Inverted server creation per actor-agent
+- Virtual lidar construction
+- advanced integration with RlLib
+- Deepracer style training with stop_iteration or stop_duration parameters
+- Edge distance LiDAR (virtual LiDAR): there we introduce a wrapper `tools/bew/virtual_lidar.py` over the package 'carla_birdeye_view'.
+The module generates a parametrised array of distances around the ego-car.
+
+Ego-states passed to a detached reward function.
+<div align="left">
+  <img src="resources/figures/ego_state_example.png" width=60%>
+</div>
+
 ## Prepare environment
 
 Download out custom carla simulator with our track and cart.
@@ -81,20 +98,4 @@ Our kart for racing
   <img src="resources/figures/docet_kart.png" width=40%>
 </div>
 
-### Advantages out Carla Gym interface 
-Main advantages over the other Gym interfaces for Carla are listed below.
 
-
-- Compute state per each step.
-- Standalone reward function, that is tight with config.
-- Inverted server creation per actor-agent
-- Virtual lidar construction
-- advanced integration with RlLib
-- Deepracer style training with stop_iteration or stop_duration parameters
-- Edge distance LiDAR (virtual LiDAR): there we introduce a wrapper `tools/bew/virtual_lidar.py` over the package 'carla_birdeye_view'.
-The module generates a parametrised array of distances around the ego-car.
-
-Ego-states passed to a detached reward function.
-<div align="left">
-  <img src="resources/figures/ego_state_example.png" width=60%>
-</div>
