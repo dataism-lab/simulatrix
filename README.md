@@ -50,7 +50,7 @@ make demo_gym
 
 ## Prepare environment
 
-Download out custom carla simulator with our track and cart.
+Download custom carla simulator with our track and cart.
 ```bash
 docker pull docetti/carla:0.9.13-1
 ```
@@ -77,7 +77,7 @@ pip install torch==1.12.1+cu102 --extra-index-url https://download.pytorch.org/w
 
 Look in [control](./control/README.md) folder
 
-We designed a specific closed track for racing purpose. It's already included in out carla docker image.
+We designed a specific closed track for racing purpose. It's already included in carla docker image.
 <div align="left">
   <img src="resources/figures/expedition_loop_waypoints.png" width=30%>
 </div>
