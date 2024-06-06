@@ -1,4 +1,6 @@
-# DeepRacer
+# 🏎️ DeepRacer 🏁
+
+https://github.com/dataism-science/DeepRacer/assets/8148517/823f1884-43b5-49e1-a171-34f1eca07c86
 
 We developed a solution for efficient and stable integration of RLLib with Carla simulator. Here we present end2end solution for learning self-driving cars in Carla simulation environment with GYM-interface. The interface handles the deepracer like mechanism for reward shaping and multi-environment data collection. The carla simulator is enriched with new track and a custom racing cart.
 
