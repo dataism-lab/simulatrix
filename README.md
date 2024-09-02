@@ -1,10 +1,10 @@
-# 🏎️ DeepRacer 🏁
+# 🏎️ Automatrix
 
 https://github.com/dataism-science/DeepRacer/assets/8148517/823f1884-43b5-49e1-a171-34f1eca07c86
 
 We developed a solution for efficient and stable integration of RLLib with Carla simulator. Here we present end2end solution for learning self-driving cars in Carla simulation environment with GYM-interface. The interface handles the deepracer like mechanism for reward shaping and multi-environment data collection. The carla simulator is enriched with new track and a custom racing cart.
 
-### Advantages of Carla Gym interface 
+### Advantages of Automatrix interface 
 Main advantages over the other Gym interfaces for Carla are listed below.
 
 - Compute state per each step.
@@ -21,7 +21,7 @@ Ego-states passed to a detached reward function.
   <img src="resources/figures/ego_state_example.png" width=60%>
 </div>
 
-## Components of CarlaGym-Deepracer
+## Components of Automatrix
 
 1. CarlaCore 
    1. init_server, stop_server;
