@@ -1,4 +1,4 @@
-# 🏎️ Automatrix
+# 🏎️ Simulatrix
 
 https://github.com/dataism-science/DeepRacer/assets/8148517/823f1884-43b5-49e1-a171-34f1eca07c86
 
@@ -21,7 +21,7 @@ Ego-states passed to a detached reward function.
   <img src="resources/figures/ego_state_example.png" width=60%>
 </div>
 
-## Components of Automatrix
+## Components of Simulatrix
 
 1. CarlaCore 
    1. init_server, stop_server;
